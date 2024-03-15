@@ -27,6 +27,11 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="licenses\mbedtls-LICENSE.txt" Pack="true" PackagePath="licenses"/>
+    <None Include="licenses\nng-LICENSE.txt" Pack="true" PackagePath="licenses"/>
+  </ItemGroup>
+
   <!-- Must be run after build so output assembly is in runtimes/ -->
   <Target Name="Runtimes" AfterTargets="Build">
     <ItemGroup>

@@ -199,44 +199,44 @@ namespace nng
 
         // public int GetOpt(string name, out Span<byte> data)
         // {
-        //     return nng_ctx_getopt(NativeNngStruct, name, out data);
+        //     return nng_ctx_get(NativeNngStruct, name, out data);
         // }
         public int GetOpt(string name, out bool data) 
-            => nng_ctx_getopt_bool(NativeNngStruct, name, out data);
+            => nng_ctx_get_bool(NativeNngStruct, name, out data);
         public int GetOpt(string name, out int data)
-            => nng_ctx_getopt_int(NativeNngStruct, name, out data);
+            => nng_ctx_get_int(NativeNngStruct, name, out data);
         public int GetOpt(string name, out nng_duration data)
-            => nng_ctx_getopt_ms(NativeNngStruct, name, out data);
+            => nng_ctx_get_ms(NativeNngStruct, name, out data);
         public int GetOpt(string name, out IntPtr data)
-            => nng_ctx_getopt_ptr(NativeNngStruct, name, out data);
+            => nng_ctx_get_ptr(NativeNngStruct, name, out data);
         public int GetOpt(string name, out UIntPtr data)
-            => nng_ctx_getopt_size(NativeNngStruct, name, out data);
+            => nng_ctx_get_size(NativeNngStruct, name, out data);
         public int GetOpt(string name, out string data)
         {
             IntPtr ptr;
-            var res = nng_ctx_getopt_string(NativeNngStruct, name, out ptr);
+            var res = nng_ctx_get_string(NativeNngStruct, name, out ptr);
             data = NngString.Create(ptr).ToManaged();
             return res;
         }
         public int GetOpt(string name, out UInt64 data)
-            => nng_ctx_getopt_uint64(NativeNngStruct, name, out data);
+            => nng_ctx_get_uint64(NativeNngStruct, name, out data);
 
         public int SetOpt(string name, byte[] data)
-            => nng_ctx_setopt(NativeNngStruct, name, data);
+            => nng_ctx_set(NativeNngStruct, name, data);
         public int SetOpt(string name, bool data)
-            => nng_ctx_setopt_bool(NativeNngStruct, name, data);
+            => nng_ctx_set_bool(NativeNngStruct, name, data);
         public int SetOpt(string name, int data)
-            => nng_ctx_setopt_int(NativeNngStruct, name, data);
+            => nng_ctx_set_int(NativeNngStruct, name, data);
         public int SetOpt(string name, nng_duration data)
-            => nng_ctx_setopt_ms(NativeNngStruct, name, data);
+            => nng_ctx_set_ms(NativeNngStruct, name, data);
         public int SetOpt(string name, IntPtr data)
-            => nng_ctx_setopt_ptr(NativeNngStruct, name, data);
+            => nng_ctx_set_ptr(NativeNngStruct, name, data);
         public int SetOpt(string name, UIntPtr data)
-            => nng_ctx_setopt_size(NativeNngStruct, name, data);
+            => nng_ctx_set_size(NativeNngStruct, name, data);
         public int SetOpt(string name, string data)
-            => nng_ctx_setopt_string(NativeNngStruct, name, data);
+            => nng_ctx_set_string(NativeNngStruct, name, data);
         public int SetOpt(string name, UInt64 data)
-            => nng_ctx_setopt_uint64(NativeNngStruct, name, data);
+            => nng_ctx_set_uint64(NativeNngStruct, name, data);
 
         public void Send(INngAio aio) =>
             nng_ctx_send(NativeNngStruct, aio.NativeNngStruct);

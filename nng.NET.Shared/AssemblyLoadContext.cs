@@ -47,12 +47,14 @@ namespace nng
             {
                 // Try framework-specific managed assembly path
                 var path = Path.Combine(assemblyPath, "runtimes", "any", "lib", 
-                    #if NETSTANDARD1_5
-                    "netstandard1.5"
-                    #elif NETSTANDARD2_0
+                    #if NETSTANDARD2_0
                     "netstandard2.0"
-                    #elif NET5_0
-                    "net5.0"
+                    #elif NET461
+                    "net461"
+                    #elif NET6_0
+                    "net6.0"
+                    #elif NET8_0
+                    "net8.0"
                     #else
                     #error "Unsupported framework?"
                     #endif
@@ -72,7 +74,7 @@ namespace nng
         {
             if (unmanagedDllName == "nng")
             {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET452 || NET461
                 bool is64bit = Environment.Is64BitProcess;
 #else
                 bool is64bit = (IntPtr.Size == 8);
@@ -86,18 +88,28 @@ namespace nng
                 }
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
-                    var fullPath = Path.Combine(assemblyPath, "runtimes", "osx" + arch, "native", "libnng.dylib");
-                    return LoadUnmanagedDllFromPath(fullPath);
+                    // TODO: build mbedtls and nng for osx
+                    var native = Path.Combine(assemblyPath, "runtimes", "osx" + arch, "native");
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedcrypto.dylib"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedx509.dylib"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedtls.dylib"));
+                    return LoadUnmanagedDllFromPath(Path.Combine(native, "libnng.dylib"));
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
-                    var fullPath = Path.Combine(assemblyPath, "runtimes", "linux" + arch, "native", "libnng.so");
-                    return LoadUnmanagedDllFromPath(fullPath);
+                    var native = Path.Combine(assemblyPath, "runtimes", "linux" + arch, "native");
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedcrypto.so"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedx509.so"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "libmbedtls.so"));
+                    return LoadUnmanagedDllFromPath(Path.Combine(native, "libnng.so"));
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
-                    var fullPath = Path.Combine(assemblyPath, "runtimes", "win" + arch, "native", "nng.dll");
-                    return LoadUnmanagedDllFromPath(fullPath);
+                    var native = Path.Combine(assemblyPath, "runtimes", "win" + arch, "native");
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "mbedcrypto.dll"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "mbedx509.dll"));
+                    LoadUnmanagedDllFromPath(Path.Combine(native, "mbedtls.dll"));
+                    return LoadUnmanagedDllFromPath(Path.Combine(native, "nng.dll"));
                 }
                 else
                 {

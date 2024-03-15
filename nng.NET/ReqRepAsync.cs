@@ -36,7 +36,7 @@ namespace nng
 
         public NngResult<Unit> SetResendTime(int msTimeout)
         {
-            var res = nng_ctx_setopt_ms(Ctx.NativeNngStruct, nng.Native.Defines.NNG_OPT_REQ_RESENDTIME, new nng_duration { TimeMs = msTimeout });
+            var res = nng_ctx_set_ms(Ctx.NativeNngStruct, nng.Native.Defines.NNG_OPT_REQ_RESENDTIME, new nng_duration { TimeMs = msTimeout });
             return Unit.OkIfZero(res);
         }
 

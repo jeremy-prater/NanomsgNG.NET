@@ -42,61 +42,58 @@ namespace nng.Native.Socket
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
         public static extern Int32 nng_socket_id(nng_socket socket);
 
-        // [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        // public static extern Int32 nng_closeall();
-
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        static extern Int32 nng_setopt(nng_socket socket, string name, byte[] data, UIntPtr size);
+        static extern Int32 nng_socket_set(nng_socket socket, string name, byte[] data, UIntPtr size);
 
-        public static Int32 nng_setopt(nng_socket socket, string name, byte[] data)
+        public static Int32 nng_socket_set(nng_socket socket, string name, byte[] data)
         {
-            return nng_setopt(socket, name, data, (UIntPtr)data.Length);
+            return nng_socket_set(socket, name, data, (UIntPtr)data.Length);
         }
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_bool(nng_socket socket, string name, bool value);
+        public static extern Int32 nng_socket_set_bool(nng_socket socket, string name, bool value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_int(nng_socket socket, string name, Int32 value);
+        public static extern Int32 nng_socket_set_int(nng_socket socket, string name, Int32 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_ms(nng_socket socket, string name, nng_duration value);
+        public static extern Int32 nng_socket_set_ms(nng_socket socket, string name, nng_duration value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_size(nng_socket socket, string name, UIntPtr value);
+        public static extern Int32 nng_socket_set_size(nng_socket socket, string name, UIntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_uint64(nng_socket socket, string name, UInt64 value);
+        public static extern Int32 nng_socket_set_uint64(nng_socket socket, string name, UInt64 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_string(nng_socket socket, string name, string value);
+        public static extern Int32 nng_socket_set_string(nng_socket socket, string name, string value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_setopt_ptr(nng_socket socket, string name, IntPtr value);
+        public static extern Int32 nng_socket_set_ptr(nng_socket socket, string name, IntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt(nng_socket socket, string name, out IntPtr data, out UIntPtr size);
+        public static extern Int32 nng_socket_get(nng_socket socket, string name, out IntPtr data, out UIntPtr size);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_bool(nng_socket socket, string name, out bool value);
+        public static extern Int32 nng_socket_get_bool(nng_socket socket, string name, out bool value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_int(nng_socket socket, string name, out Int32 value);
+        public static extern Int32 nng_socket_get_int(nng_socket socket, string name, out Int32 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_ms(nng_socket socket, string name, out nng_duration value);
+        public static extern Int32 nng_socket_get_ms(nng_socket socket, string name, out nng_duration value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_size(nng_socket socket, string name, out UIntPtr value);
+        public static extern Int32 nng_socket_get_size(nng_socket socket, string name, out UIntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_string(nng_socket socket, string name, out IntPtr value);
+        public static extern Int32 nng_socket_get_string(nng_socket socket, string name, out IntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_uint64(nng_socket socket, string name, out UInt64 value);
+        public static extern Int32 nng_socket_get_uint64(nng_socket socket, string name, out UInt64 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Int32 nng_getopt_ptr(nng_socket socket, string name, out IntPtr value);
+        public static extern Int32 nng_socket_get_ptr(nng_socket socket, string name, out IntPtr value);
 
 
 

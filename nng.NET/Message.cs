@@ -185,30 +185,30 @@ namespace nng
         public INngListener Listener => nng.NngListener.Create(nng_pipe_listener(NativeNngStruct));
 
         public int GetOpt(string name, out bool data)
-            => nng_pipe_getopt_bool(NativeNngStruct, name, out data);
+            => nng_pipe_get_bool(NativeNngStruct, name, out data);
 
         public int GetOpt(string name, out int data)
-            => nng_pipe_getopt_int(NativeNngStruct, name, out data);
+            => nng_pipe_get_int(NativeNngStruct, name, out data);
 
         public int GetOpt(string name, out nng_duration data)
-            => nng_pipe_getopt_ms(NativeNngStruct, name, out data);
+            => nng_pipe_get_ms(NativeNngStruct, name, out data);
 
         public int GetOpt(string name, out IntPtr data)
-            => nng_pipe_getopt_ptr(NativeNngStruct, name, out data);
+            => nng_pipe_get_ptr(NativeNngStruct, name, out data);
 
         public int GetOpt(string name, out string data)
         {
             IntPtr ptr;
-            var res = nng_pipe_getopt_string(NativeNngStruct, name, out ptr);
+            var res = nng_pipe_get_string(NativeNngStruct, name, out ptr);
             data = NngString.Create(ptr).ToManaged();
             return res;
         }
 
         public int GetOpt(string name, out UIntPtr data)
-            => nng_pipe_getopt_size(NativeNngStruct, name, out data);
+            => nng_pipe_get_size(NativeNngStruct, name, out data);
 
         public int GetOpt(string name, out ulong data)
-            => nng_pipe_getopt_uint64(NativeNngStruct, name, out data);
+            => nng_pipe_get_uint64(NativeNngStruct, name, out data);
 
         public NngResult<Unit> Close() => Unit.OkIfZero( nng_pipe_close(NativeNngStruct) );
     }

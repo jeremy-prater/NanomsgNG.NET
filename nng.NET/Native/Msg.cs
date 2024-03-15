@@ -140,24 +140,24 @@ namespace nng.Native.Msg
         public static extern int nng_pipe_notify(nng_socket socket, Defines.NngPipeEv ev, Defines.PipeEventCallback callback, IntPtr arg);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_bool(nng_pipe pipe, string opt, out bool val);
+        public static extern int nng_pipe_get_bool(nng_pipe pipe, string opt, out bool val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_int(nng_pipe pipe, string opt, out int val);
+        public static extern int nng_pipe_get_int(nng_pipe pipe, string opt, out int val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_ms(nng_pipe pipe, string opt, out nng_duration val);
+        public static extern int nng_pipe_get_ms(nng_pipe pipe, string opt, out nng_duration val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_ptr(nng_pipe pipe, string opt, out IntPtr val);
+        public static extern int nng_pipe_get_ptr(nng_pipe pipe, string opt, out IntPtr val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_string(nng_pipe pipe, string opt, out IntPtr val);
+        public static extern int nng_pipe_get_string(nng_pipe pipe, string opt, out IntPtr val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_size(nng_pipe pipe, string opt, out UIntPtr val);
+        public static extern int nng_pipe_get_size(nng_pipe pipe, string opt, out UIntPtr val);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_pipe_getopt_uint64(nng_pipe pipe, string opt, out UInt64 val);
+        public static extern int nng_pipe_get_uint64(nng_pipe pipe, string opt, out UInt64 val);
     }
 }

@@ -27,57 +27,57 @@ namespace nng.Native.Ctx
         public static extern void nng_ctx_send(nng_ctx ctx, nng_aio aio);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt(nng_ctx ctx, string name, byte[] data, UIntPtr size);
+        public static extern int nng_ctx_get(nng_ctx ctx, string name, byte[] data, UIntPtr size);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_bool(nng_ctx ctx, string name, out bool data);
+        public static extern int nng_ctx_get_bool(nng_ctx ctx, string name, out bool data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_int(nng_ctx ctx, string name, out Int32 data);
+        public static extern int nng_ctx_get_int(nng_ctx ctx, string name, out Int32 data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_ms(nng_ctx ctx, string name, out nng_duration data);
+        public static extern int nng_ctx_get_ms(nng_ctx ctx, string name, out nng_duration data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_ptr(nng_ctx ctx, string name, out IntPtr data);
+        public static extern int nng_ctx_get_ptr(nng_ctx ctx, string name, out IntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_size(nng_ctx ctx, string name, out UIntPtr data);
+        public static extern int nng_ctx_get_size(nng_ctx ctx, string name, out UIntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_string(nng_ctx ctx, string name, out IntPtr data);
+        public static extern int nng_ctx_get_string(nng_ctx ctx, string name, out IntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_getopt_uint64(nng_ctx ctx, string name, out UInt64 data);
+        public static extern int nng_ctx_get_uint64(nng_ctx ctx, string name, out UInt64 data);
 
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt(nng_ctx ctx, string name, byte[] data, UIntPtr size);
+        public static extern int nng_ctx_set(nng_ctx ctx, string name, byte[] data, UIntPtr size);
 
-        public static int nng_ctx_setopt(nng_ctx ctx, string name, byte[] data)
+        public static int nng_ctx_set(nng_ctx ctx, string name, byte[] data)
         {
-            return nng_ctx_setopt(ctx, name, data, (UIntPtr)data.Length);
+            return nng_ctx_set(ctx, name, data, (UIntPtr)data.Length);
         }
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_bool(nng_ctx ctx, string name, bool value);
+        public static extern int nng_ctx_set_bool(nng_ctx ctx, string name, bool value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_int(nng_ctx ctx, string name, Int32 value);
+        public static extern int nng_ctx_set_int(nng_ctx ctx, string name, Int32 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_ms(nng_ctx ctx, string name, nng_duration value);
+        public static extern int nng_ctx_set_ms(nng_ctx ctx, string name, nng_duration value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_ptr(nng_ctx ctx, string name, IntPtr value);
+        public static extern int nng_ctx_set_ptr(nng_ctx ctx, string name, IntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_size(nng_ctx ctx, string name, UIntPtr value);
+        public static extern int nng_ctx_set_size(nng_ctx ctx, string name, UIntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_string(nng_ctx ctx, string name, string value);
+        public static extern int nng_ctx_set_string(nng_ctx ctx, string name, string value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_ctx_setopt_uint64(nng_ctx ctx, string name, UInt64 value);
+        public static extern int nng_ctx_set_uint64(nng_ctx ctx, string name, UInt64 value);
     }
 }

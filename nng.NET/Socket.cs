@@ -40,41 +40,41 @@ namespace nng
             => NngResult<INngDialer>.Ok(NngDialer.Create(this, url));
 
         public int GetOpt(string name, out bool data)
-            => nng_getopt_bool(NativeNngStruct, name, out data);
+            => nng_socket_get_bool(NativeNngStruct, name, out data);
         public int GetOpt(string name, out int data)
-            => nng_getopt_int(NativeNngStruct, name, out data);
+            => nng_socket_get_int(NativeNngStruct, name, out data);
         public int GetOpt(string name, out nng_duration data)
-            => nng_getopt_ms(NativeNngStruct, name, out data);
+            => nng_socket_get_ms(NativeNngStruct, name, out data);
         public int GetOpt(string name, out IntPtr data)
-            => nng_getopt_ptr(NativeNngStruct, name, out data);
+            => nng_socket_get_ptr(NativeNngStruct, name, out data);
         public int GetOpt(string name, out UIntPtr data)
-            => nng_getopt_size(NativeNngStruct, name, out data);
+            => nng_socket_get_size(NativeNngStruct, name, out data);
         public int GetOpt(string name, out string data)
         {
             IntPtr ptr;
-            var res = nng_getopt_string(NativeNngStruct, name, out ptr);
+            var res = nng_socket_get_string(NativeNngStruct, name, out ptr);
             data = NngString.Create(ptr).ToManaged();
             return res;
         }
         public int GetOpt(string name, out UInt64 data)
-            => nng_getopt_uint64(NativeNngStruct, name, out data);
+            => nng_socket_get_uint64(NativeNngStruct, name, out data);
 
         public int SetOpt(string name, byte[] data)
-            => nng_setopt(NativeNngStruct, name, data);
+            => nng_socket_set(NativeNngStruct, name, data);
         public int SetOpt(string name, bool data)
-            => nng_setopt_bool(NativeNngStruct, name, data);
+            => nng_socket_set_bool(NativeNngStruct, name, data);
         public int SetOpt(string name, int data)
-            => nng_setopt_int(NativeNngStruct, name, data);
+            => nng_socket_set_int(NativeNngStruct, name, data);
         public int SetOpt(string name, nng_duration data)
-            => nng_setopt_ms(NativeNngStruct, name, data);
+            => nng_socket_set_ms(NativeNngStruct, name, data);
         public int SetOpt(string name, IntPtr data)
-            => nng_setopt_ptr(NativeNngStruct, name, data);
+            => nng_socket_set_ptr(NativeNngStruct, name, data);
         public int SetOpt(string name, UIntPtr data)
-            => nng_setopt_size(NativeNngStruct, name, data);
+            => nng_socket_set_size(NativeNngStruct, name, data);
         public int SetOpt(string name, string data)
-            => nng_setopt_string(NativeNngStruct, name, data);
+            => nng_socket_set_string(NativeNngStruct, name, data);
         public int SetOpt(string name, UInt64 data)
-            => nng_setopt_uint64(NativeNngStruct, name, data);
+            => nng_socket_set_uint64(NativeNngStruct, name, data);
 
         public NngResult<Unit> Send(ReadOnlySpan<byte> message, Defines.NngFlag flags = default)
         {

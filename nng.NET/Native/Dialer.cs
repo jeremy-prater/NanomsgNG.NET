@@ -25,57 +25,57 @@ namespace nng.Native.Dialer
 
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt(nng_dialer dialer, string name, IntPtr data, UIntPtr size);
+        public static extern int nng_dialer_get(nng_dialer dialer, string name, IntPtr data, UIntPtr size);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_bool(nng_dialer dialer, string name, out bool data);
+        public static extern int nng_dialer_get_bool(nng_dialer dialer, string name, out bool data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_int(nng_dialer dialer, string name, out Int32 data);
+        public static extern int nng_dialer_get_int(nng_dialer dialer, string name, out Int32 data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_ms(nng_dialer dialer, string name, out nng_duration data);
+        public static extern int nng_dialer_get_ms(nng_dialer dialer, string name, out nng_duration data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_ptr(nng_dialer dialer, string name, out IntPtr data);
+        public static extern int nng_dialer_get_ptr(nng_dialer dialer, string name, out IntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_size(nng_dialer dialer, string name, out UIntPtr data);
+        public static extern int nng_dialer_get_size(nng_dialer dialer, string name, out UIntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_string(nng_dialer dialer, string name, out IntPtr data);
+        public static extern int nng_dialer_get_string(nng_dialer dialer, string name, out IntPtr data);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_getopt_uint64(nng_dialer dialer, string name, out UInt64 data);
+        public static extern int nng_dialer_get_uint64(nng_dialer dialer, string name, out UInt64 data);
 
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        static extern int nng_dialer_setopt(nng_dialer dialer, string name, byte[] data, UIntPtr size);
+        static extern int nng_dialer_set(nng_dialer dialer, string name, byte[] data, UIntPtr size);
 
-        public static int nng_dialer_setopt(nng_dialer dialer, string name, byte[] data)
+        public static int nng_dialer_set(nng_dialer dialer, string name, byte[] data)
         {
-            return nng_dialer_setopt(dialer, name, data, (UIntPtr)data.Length);
+            return nng_dialer_set(dialer, name, data, (UIntPtr)data.Length);
         }
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_bool(nng_dialer dialer, string name, bool value);
+        public static extern int nng_dialer_set_bool(nng_dialer dialer, string name, bool value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_int(nng_dialer dialer, string name, Int32 value);
+        public static extern int nng_dialer_set_int(nng_dialer dialer, string name, Int32 value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_ms(nng_dialer dialer, string name, nng_duration value);
+        public static extern int nng_dialer_set_ms(nng_dialer dialer, string name, nng_duration value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_ptr(nng_dialer dialer, string name, IntPtr value);
+        public static extern int nng_dialer_set_ptr(nng_dialer dialer, string name, IntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_size(nng_dialer dialer, string name, UIntPtr value);
+        public static extern int nng_dialer_set_size(nng_dialer dialer, string name, UIntPtr value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_string(nng_dialer dialer, string name, string value);
+        public static extern int nng_dialer_set_string(nng_dialer dialer, string name, string value);
 
         [DllImport(NngDll, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int nng_dialer_setopt_uint64(nng_dialer dialer, string name, UInt64 value);
+        public static extern int nng_dialer_set_uint64(nng_dialer dialer, string name, UInt64 value);
     }
 }

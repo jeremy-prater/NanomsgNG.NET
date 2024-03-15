@@ -1,30 +1,31 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.5;netstandard2.0;net5.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <RootNamespace>nng</RootNamespace>
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0'">
-    <LangVersion>9.0</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'!='net5.0'">
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE" Pack="true" PackagePath="licenses"/>
+  </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.3.2</VersionPrefix>
-    <VersionSuffix>rc2</VersionSuffix>
+    <VersionPrefix>1.5.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
     <Authors>Jeikabu</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Owners>Jeikabu</Owners>
-    <PackageProjectUrl>https://github.com/jeikabu/nng.NETCore</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/rodrigo455/nng.NETCore</PackageProjectUrl>
     <Summary>.NET Core bindings to nng</Summary>
     <PackageTags>nng csnng</PackageTags>
     <Description>.NET Core bindings to nng (https://github.com/nanomsg/nng)</Description>
-    <RepositoryUrl>https://github.com/jeikabu/nng.NETCore</RepositoryUrl>
+    <RepositoryUrl>https://github.com/rodrigo455/nng.NETCore</RepositoryUrl>
   </PropertyGroup>
 </Project>
