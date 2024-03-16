@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../LICENSE" Pack="true" PackagePath="licenses"/>
+    <None Include="..\LICENSE.txt" Pack="true" PackagePath="licenses"/>
+    <None Include="..\README.md" Pack="true" PackagePath="$(PackageReadmeFile)"/>
   </ItemGroup>
 
   <PropertyGroup>
@@ -21,10 +22,11 @@
     <VersionSuffix></VersionSuffix>
     <Authors>Jeikabu</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Owners>Jeikabu</Owners>
     <PackageProjectUrl>https://github.com/rodrigo455/nng.NETCore</PackageProjectUrl>
     <Summary>.NET Core bindings to nng</Summary>
-    <PackageTags>nng csnng</PackageTags>
+    <PackageTags>nanomsg nng csnng</PackageTags>
     <Description>.NET Core bindings to nng (https://github.com/nanomsg/nng)</Description>
     <RepositoryUrl>https://github.com/rodrigo455/nng.NETCore</RepositoryUrl>
   </PropertyGroup>

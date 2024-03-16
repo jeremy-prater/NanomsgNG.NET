@@ -1,6 +1,12 @@
-# nng<span>.</span>NET/NETCore
+# NanomsgNG.NET (nng.NET)
 
-.NET bindings to [NNG](https://github.com/nanomsg/nng):
+__Fork from [jeikabu/nng.NETCore](https://github.com/jeikabu/nng.NETCore)__:
+
+- Added TLS support with mbedtls libraries added to the runtime
+- Fix Disposable Interface implementation
+- Target .NET 8
+
+__.NET bindings to [NNG](https://github.com/nanomsg/nng)__:
 
 > NNG, like its predecessors nanomsg (and to some extent ZeroMQ), is a lightweight, broker-less library, offering a simple API to solve common recurring messaging problems, such as publish/subscribe, RPC-style request/reply, or service discovery. The API frees the programmer from worrying about details like connection management, retries, and other common considerations, so that they can focus on the application instead of the plumbing.
 

@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>nng.NET.Shared</PackageId>
+    <PackageId>NanomsgNG.NET.Shared</PackageId>
     <PackageOutputPath>../bin/$(Configuration)</PackageOutputPath>
   </PropertyGroup>
 

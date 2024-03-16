@@ -9,7 +9,7 @@
     <PackageOutputPath>../bin/$(Configuration)</PackageOutputPath>
     <!-- Including assembly as part of runtimes/ so don't want it placed in lib/ -->
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <PackageId>nng.NET</PackageId>
+    <PackageId>NanomsgNG.NET</PackageId>
     <!-- Needed to avoid `error NU5128` when running `dotnet pack`.
     Assemblies for targetted frameworks are in runtimes/ instead of lib/ or ref/ 
     See: https://docs.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5128#scenario-2
