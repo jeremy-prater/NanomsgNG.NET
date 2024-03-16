@@ -78,7 +78,6 @@ namespace nng
                     return socket.SetOpt(name, value);
                 case UInt64 value:
                     return socket.SetOpt(name, value);
-                
             }
             return Defines.NNG_EINVAL;
         }
@@ -118,7 +117,7 @@ namespace nng
     /// </summary>
     public interface INngDialer : IStart, IOptions
     {
-        int Id { get; }   
+        int Id { get; }
     }
 
     /// <summary>

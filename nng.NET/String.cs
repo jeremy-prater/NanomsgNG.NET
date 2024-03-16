@@ -38,13 +38,22 @@ namespace nng
         {
             if (disposed)
                 return;
+
             if (disposing)
             {
-                if (Ptr != IntPtr.Zero)
-                    nng_strfree(Ptr);
+                // Dispose managed resources.
             }
+
+            if (Ptr != IntPtr.Zero)
+            {
+                nng_strfree(Ptr);
+            }
+
             disposed = true;
         }
+
+        ~NngString() => Dispose(false);
+
         bool disposed = false;
         #endregion
     }

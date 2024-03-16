@@ -19,7 +19,7 @@ namespace nng
         public static INngDialer Create(INngSocket socket, string url)
         {
             int res = nng_dialer_create(out var dialer, socket.NativeNngStruct, url);
-            if (res != 0)
+            if (res != NNG_OK)
             {
                 return null;
             }
@@ -71,6 +71,22 @@ namespace nng
         public int SetOpt(string name, string data)
             => nng_dialer_set_string(NativeNngStruct, name, data);
 
+        private NngTlsConfig tlsConfig = null;
+        public NngTlsConfig TlsConfig { 
+            get => tlsConfig;
+            set
+            {
+                if (value != null)
+                {
+                    int res = SetOpt(NNG_OPT_TLS_CONFIG, value.NativeNngStruct.ptr);
+                    if (res == NNG_OK)
+                    {
+                        tlsConfig = value;
+                    }
+                }
+            }
+        }
+
         #region IDisposable
         public void Dispose()
         {
@@ -82,12 +98,19 @@ namespace nng
         {
             if (disposed)
                 return;
+
             if (disposing)
             {
-                int _ = nng_dialer_close(NativeNngStruct);
+                tlsConfig?.Dispose();
             }
+
+            int _ = nng_dialer_close(NativeNngStruct);
+
             disposed = true;
         }
+
+        ~NngDialer() => Dispose(false);
+
         bool disposed = false;
         #endregion
 

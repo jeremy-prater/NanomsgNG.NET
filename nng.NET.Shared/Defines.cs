@@ -293,6 +293,33 @@ namespace nng.Native
         public bool IsNull => ptr == IntPtr.Zero;
     }
 
+    public enum nng_tls_mode
+    {
+        NNG_TLS_MODE_CLIENT = 0,
+        NNG_TLS_MODE_SERVER = 1
+    };
+
+    public enum nng_tls_auth_mode
+    {
+        NNG_TLS_AUTH_MODE_NONE = 0, // No verification is performed
+        NNG_TLS_AUTH_MODE_OPTIONAL = 1, // Verify cert if presented
+        NNG_TLS_AUTH_MODE_REQUIRED = 2  // Verify cert, close if invalid
+    };
+
+    public enum nng_tls_version
+    {
+        NNG_TLS_1_0 = 0x301,
+        NNG_TLS_1_1 = 0x302,
+        NNG_TLS_1_2 = 0x303,
+        NNG_TLS_1_3 = 0x304
+    };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct nng_tls_config
+    {
+        public IntPtr ptr;
+    }
+
 #region sockaddr
     public enum nng_sockaddr_family : UInt16
     {

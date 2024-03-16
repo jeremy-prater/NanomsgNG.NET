@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace nng
 {
+    using static nng.Native.Defines;
     using static nng.Native.Aio.UnsafeNativeMethods;
     using static nng.Native.Ctx.UnsafeNativeMethods;
     using static nng.Native.Msg.UnsafeNativeMethods;
@@ -174,10 +175,24 @@ namespace nng
         protected object sync = new object();
 
         #region IDisposable
-        public void Dispose()
+        public void Dispose() => Dispose(true);
+
+        protected virtual void Dispose(bool disposing)
         {
-            Aio?.Dispose();
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                Aio?.Dispose();
+            }
+
+            // No unmanaged resources to cleanup
+
+            disposed = true;
         }
+
+        bool disposed = false;
         #endregion
     }
 
@@ -191,7 +206,7 @@ namespace nng
         public static NngResult<INngCtx> Create(INngSocket socket)
         {
             var res = nng_ctx_open(out var ctx, socket.NativeNngStruct);
-            if (res != 0)
+            if (res != NNG_OK)
                 return NngResult<INngCtx>.Fail(res);
             return NngResult<INngCtx>.Ok(new NngCtx { NativeNngStruct = ctx });
         }
@@ -253,12 +268,19 @@ namespace nng
         {
             if (disposed)
                 return;
+
             if (disposing)
             {
-                var _ = nng_ctx_close(NativeNngStruct);
+                // Dispose managed resources.
             }
+
+            var _ = nng_ctx_close(NativeNngStruct);
+
             disposed = true;
         }
+
+        ~NngCtx() => Dispose(false);
+
         bool disposed = false;
         #endregion
     }

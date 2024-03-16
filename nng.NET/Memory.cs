@@ -52,13 +52,22 @@ namespace nng
         {
             if (disposed)
                 return;
+
             if (disposing)
             {
-                if (Ptr != IntPtr.Zero)
-                    nng_free(Ptr, Length);
+                // Dispose managed resources.
             }
+
+            if (Ptr != IntPtr.Zero)
+            {
+                nng_free(Ptr, Length);
+            }
+
             disposed = true;
         }
+
+        ~NngAlloc() => Dispose(false);
+
         bool disposed = false;
         #endregion
     }

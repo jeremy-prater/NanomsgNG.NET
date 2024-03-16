@@ -14,7 +14,7 @@ namespace nng
 
         public static NngResult<Unit> OkIfZero(int errno)
         {
-            if (errno == 0)
+            if (errno == NNG_OK)
                 return Ok;
             else
                 return Err((NngErrno)errno);
@@ -124,7 +124,7 @@ namespace nng
         /// <returns></returns>
         public static NngResult<TOk> OkIfZero(int errno, TOk ok)
         {
-            if (errno == 0)
+            if (errno == NNG_OK)
                 return Ok(ok);
             else
                 return Err((NngErrno)errno);
@@ -139,7 +139,7 @@ namespace nng
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static NngResult<TOk> OkThen(int errno, Func<TOk> func)
         {
-            if (errno == 0)
+            if (errno == NNG_OK)
                 return Ok(func());
             else
                 return Err((NngErrno)errno);
@@ -152,7 +152,7 @@ namespace nng
         /// <returns></returns>
         public static NngResult<TOk> Fail(int errno)
         {
-            if (errno == 0)
+            if (errno == NNG_OK)
                 throw null;
             return Err((NngErrno)errno);
         }
