@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <!-- Needed so tests run in similar environment as consumers of nupkg -->
-  <Import Project="..\nng.NET\build\nng.NET.targets" />
+  <Import Project="..\nng.NET\build\NanomsgNG.NET.targets" />
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>

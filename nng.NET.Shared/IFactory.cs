@@ -69,7 +69,12 @@ namespace nng
         NngResult<INngStream> StreamFrom(INngAio aio);
     }
 
-    public interface INngApiFactory : ISocketFactory, INngAsyncFactory, INngStreamFactory, INngMiscFactory
+    public interface INngTlsConfigFactory
+    {
+        NngResult<INngTlsConfig> TlsConfigAlloc(nng_tls_mode mode);
+    }
+
+    public interface INngApiFactory : ISocketFactory, INngAsyncFactory, INngStreamFactory, INngMiscFactory, INngTlsConfigFactory
     {}
 
     public interface IAPIFactory<T> : INngApiFactory, IMessageFactory<T>,  IAsyncContextFactory<T>

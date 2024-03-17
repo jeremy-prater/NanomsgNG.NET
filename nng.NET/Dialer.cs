@@ -71,8 +71,8 @@ namespace nng
         public int SetOpt(string name, string data)
             => nng_dialer_set_string(NativeNngStruct, name, data);
 
-        private NngTlsConfig tlsConfig = null;
-        public NngTlsConfig TlsConfig { 
+        private INngTlsConfig tlsConfig = null;
+        public INngTlsConfig TlsConfig { 
             get => tlsConfig;
             set
             {

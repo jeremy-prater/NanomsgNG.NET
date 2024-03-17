@@ -9,20 +9,20 @@ namespace nng
     using static nng.Native.Tls.UnsafeNativeMethods;
 
     /// <summary>
-    /// Used to initiate a connection to a <see cref="INngListener"/>
+    /// TLS configuration for dialers and listeners
     /// </summary>
-    public class NngTlsConfig
+    public class TlsConfig: INngTlsConfig
     {
         public nng_tls_config NativeNngStruct { get; protected set; }
 
-        public static NngTlsConfig Alloc(nng_tls_mode mode)
+        public static NngResult<INngTlsConfig> Alloc(nng_tls_mode mode)
         {
             int res = nng_tls_config_alloc(out var tlsConfig, mode);
-            if (res != 0)
+            if (res != NNG_OK)
             {
-                return null;
+                return NngResult<INngTlsConfig>.Fail(res);
             }
-            return new NngTlsConfig() { NativeNngStruct = tlsConfig};
+            return NngResult<INngTlsConfig>.Ok(new TlsConfig() { NativeNngStruct = tlsConfig});
         }
 
         public int SetServerName(string name)
@@ -74,11 +74,11 @@ namespace nng
             disposed = true;
         }
 
-        ~NngTlsConfig() => Dispose(false);
+        ~TlsConfig() => Dispose(false);
 
         bool disposed = false;
         #endregion
 
-        private NngTlsConfig() { }
+        private TlsConfig() { }
     }
 }

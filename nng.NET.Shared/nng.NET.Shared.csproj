@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="system.memory" Version="4.5.4" />
+    <PackageReference Include="system.memory" Version="4.5.5" />
     <PackageReference Include="system.valuetuple" Version="4.5.0" />
     <PackageReference Include="system.runtime.loader" Version="4.3.0" />
   </ItemGroup>

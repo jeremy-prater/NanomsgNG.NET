@@ -109,6 +109,7 @@ namespace nng
     public interface INngListener : IStart, IOptions
     {
         int Id { get; }
+        INngTlsConfig TlsConfig { get; set; }
         int GetOpt(string name, out nng_sockaddr data);
     }
 
@@ -118,6 +119,7 @@ namespace nng
     public interface INngDialer : IStart, IOptions
     {
         int Id { get; }
+        INngTlsConfig TlsConfig { get; set; }
     }
 
     /// <summary>

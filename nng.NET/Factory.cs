@@ -42,6 +42,7 @@ namespace nng.Factories
         public NngResult<IPairSocket> PairOpen() => Pair0Socket.Open();
         public NngResult<IRespondentSocket> RespondentOpen() => RespondentSocket.Open();
         public NngResult<ISurveyorSocket> SurveyorOpen() => SurveyorSocket.Open();
+        public NngResult<INngTlsConfig> TlsConfigAlloc(nng_tls_mode mode) => TlsConfig.Alloc(mode);
 
         #region INngAsyncFactory
         public NngResult<INngAio> CreateAio(AioCallback callback) => NngAio.Create(callback);

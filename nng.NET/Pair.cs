@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace nng
 {
+    using static nng.Native.Defines;
     using static nng.Native.Protocols.UnsafeNativeMethods;
 
     /// <summary>
@@ -19,7 +20,7 @@ namespace nng
         public static NngResult<IPairSocket> Open()
         {
             int res = nng_pair0_open(out var socket);
-            if (res != 0)
+            if (res != NNG_OK)
             {
                 return NngResult<IPairSocket>.Fail(res);
             }
@@ -41,7 +42,7 @@ namespace nng
         public static NngResult<IPairSocket> Open()
         {
             int res = nng_pair1_open(out var socket);
-            if (res != 0)
+            if (res != NNG_OK)
             {
                 return NngResult<IPairSocket>.Fail(res);
             }
