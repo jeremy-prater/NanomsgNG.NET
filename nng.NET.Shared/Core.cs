@@ -9,23 +9,34 @@ namespace nng
 {
     public class NngException : Exception
     {
-        public NngException(int errorCode)
+        public NngException(int errorCode, string message = "")
+            : base(MessageFormat(errorCode, message))
         {
             ErrorCode = errorCode;
         }
-        public NngException(NngErrno errno)
+
+        public NngException(NngErrno errno, string message = "")
+            : this((int)errno, message)
         {
-            ErrorCode = (int)errno;
         }
 
-        public static void AssertZero(int errorCode)
+        public static void AssertZero(int errorCode, string message = "")
         {
-            if (errorCode != 0)
-                throw new NngException(errorCode);
+            if (errorCode != NNG_OK)
+                throw new NngException(errorCode, message);
         }
 
-        public override string Message => Error.ToString();//nng_strerror(error);
-        //public override string ToString() => Message;
+        private static string MessageFormat(int errorCode, string message)
+        {
+            if (String.IsNullOrEmpty(message))
+            {
+                return ((NngErrno)errorCode).ToString();
+            }
+            else
+            {
+                return ((NngErrno)errorCode).ToString() + ": " + message;
+            }
+        }
 
         public int ErrorCode { get; } = 0;
         public NngErrno Error => (NngErrno)ErrorCode;
