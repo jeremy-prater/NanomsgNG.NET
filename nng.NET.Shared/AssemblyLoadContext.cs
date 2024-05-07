@@ -49,8 +49,8 @@ namespace nng
                 var path = Path.Combine(assemblyPath, "runtimes", "any", "lib", 
                     #if NETSTANDARD2_0
                     "netstandard2.0"
-                    #elif NET461
-                    "net461"
+                    #elif NET462
+                    "net462"
                     #elif NET6_0
                     "net6.0"
                     #elif NET8_0

@@ -16,20 +16,22 @@ RUN apt-get update && apt-get install -y \
     git
 
 ARG SRC
-ARG NNG_VERSION=1.7.3
+ARG NNG_VERSION=1.8.0
 ARG NNG_BRANCH=v${NNG_VERSION}
-ARG MBEDTLS_VERSION=3.5.2
+ARG MBEDTLS_VERSION=3.6.0
 ARG MBEDTLS_BRANCH=v${MBEDTLS_VERSION}
 WORKDIR ${SRC}
 
-RUN git clone https://github.com/Mbed-TLS/mbedtls.git \
-    && cd mbedtls \
-    && git checkout ${MBEDTLS_BRANCH}
+RUN git clone https://github.com/Mbed-TLS/mbedtls.git && \
+    cd mbedtls && \
+    git checkout ${MBEDTLS_BRANCH} && \
+    git submodule update --init
 
-RUN git clone https://github.com/nanomsg/nng.git \
-    && cd nng \
-    && git checkout ${NNG_BRANCH}
+RUN git clone https://github.com/nanomsg/nng.git &&\
+    cd nng &&\
+    git checkout ${NNG_BRANCH}
 
+################################################################################
 # Build x64 Linux
 FROM debian:buster AS linux-x64
 
@@ -72,6 +74,7 @@ RUN mkdir -p nng/build && cd nng/build \
         ${SRC}/mbedtls/install/lib/libmbedtls.so \
         ${RUNTIME_NATIVE}
 
+################################################################################
 # Build ARM32
 FROM multiarch/debian-debootstrap:armhf-buster AS arm32v7
 
@@ -114,6 +117,7 @@ RUN mkdir -p nng/build && cd nng/build \
         ${SRC}/mbedtls/install/lib/libmbedtls.so \
         ${RUNTIME_NATIVE}
 
+################################################################################
 # Build ARM64
 FROM multiarch/debian-debootstrap:arm64-buster AS arm64v8
 
@@ -156,6 +160,7 @@ RUN mkdir -p nng/build && cd nng/build \
         ${SRC}/mbedtls/install/lib/libmbedtls.so \
         ${RUNTIME_NATIVE}
 
+################################################################################
 # Copy binaries to host
 FROM debian:buster AS copy
 

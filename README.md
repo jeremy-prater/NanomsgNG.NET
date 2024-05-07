@@ -2,8 +2,8 @@
 
 __Fork from [jeikabu/nng.NETCore](https://github.com/jeikabu/nng.NETCore)__:
 
-- NNG v1.7.3
-- Added TLS support with mbedtls libraries added to the runtime
+- NNG v1.8.0
+- Added TLS support with mbedtls libraries added to the runtime (v3.6.0)
 - Fix Disposable Interface implementation
 - Target .NET 8
 
