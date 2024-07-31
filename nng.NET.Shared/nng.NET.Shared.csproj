@@ -16,6 +16,10 @@
   <ItemGroup>
     <PackageReference Include="system.memory" Version="4.5.5" />
     <PackageReference Include="system.valuetuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' != 'net462' ">
+    <!-- not supported in .NET Framework -->
     <PackageReference Include="system.runtime.loader" Version="4.3.0" />
   </ItemGroup>
 
