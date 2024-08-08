@@ -49,7 +49,9 @@ namespace nng
             // manually load the unmanaged dlls
             loadContext.LoadUnmanagedDll("nng");
 
-            var assem = loadContext.Load(new AssemblyName(managedAssemblyName));
+            var assem_name = new AssemblyName(managedAssemblyName);
+            assem_name.ProcessorArchitecture = ProcessorArchitecture.None;
+            var assem = loadContext.Load(assem_name);
             var type = assem.GetType(factoryName);
 
             return (IAPIFactory<INngMsg>)Activator.CreateInstance(type);
