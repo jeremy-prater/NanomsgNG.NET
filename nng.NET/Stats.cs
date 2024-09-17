@@ -35,7 +35,10 @@ namespace nng
             var res = nng_stats_get(out nng_stat statsp);
             return NngResult<IStatRoot>.OkThen(res, () => new StatRoot { NativeNngStruct = statsp });
         }
+    }
 
+    public class StatRoot : NngStat, IStatRoot
+    {
         #region IDisposable
         public void Dispose()
         {
@@ -57,15 +60,10 @@ namespace nng
             disposed = true;
         }
 
-        ~NngStat() => Dispose(false);
+        ~StatRoot() => Dispose(false);
 
         bool disposed = false;
         #endregion
-    }
-
-    public class StatRoot : NngStat, IStatRoot
-    {
-
     }
 
     public class StatChild : NngStat, IStatChild
